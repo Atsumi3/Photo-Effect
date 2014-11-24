@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PhotoEffect</string>
+    <string name="twitter_api_key">tABPpknxZdkzLmEdNGN8Oyk4O</string>
+    <string name="twitter_api_secret">FWEC4yT1kiKJf8iLuCF1JBdV5pLg929zJ0gdIKPMVUwn2n3Sgw</string>
+
+    <string name="twitter_callback">freshtissue://twitter</string>
+    <string name="no_set_account">アカウントが設定されていません</string>
+    <string name="twitter_auth">認証</string>
+    <string name="cancel">キャンセル</string>
+    <string name="tweet_send">ツイート</string>
+    <string name="tweet_body">ツイート内容</string>
+    <string name="tweet_success">ツイート成功</string>
+    <string name="tweet_failed">ツイート失敗</string>
+    <string name="tweet_result">ツイート結果</string>
+    <string name="tweeting">ツイートしています…</string>
+    <string name="load_camera">カメラで撮影する</string>
+    <string name="load_gallery">ギャラリーから選択する</string>
+    <string name="load_image">画像を読み込む</string>
+    <string name="tweet_ok">ツイートする(要認証)</string>
+    <string name="twitter_account_reauth">アカウントの再認証</string>
+    <string name="twitter_menu">ツイッターメニュー</string>
+
+</resources>
