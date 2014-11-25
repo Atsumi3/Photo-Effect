@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PhotoEffect.iml" filepath="$PROJECT_DIR$/PhotoEffect.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TestGPUImage.iml" filepath="$PROJECT_DIR$/TestGPUImage.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
