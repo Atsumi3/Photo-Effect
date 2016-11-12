@@ -1,0 +1,1 @@
+package info.nukoneko.android.photoeffect.controller.base;import com.trello.rxlifecycle.components.support.RxAppCompatActivity;/** * Created by Atsumi3 on 2016/11/12. */public abstract class BaseActivity extends RxAppCompatActivity {}

@@ -1,0 +1,1 @@
+package info.nukoneko.android.photoeffect.sys.enm;/** * Created by TEJNEK on 2016/11/13. *//** * フィルタの引数によって分ける */public enum  NKFilterArgumentType {    NONE,   //何もなし    SINGLE, //一つのFloatの値    DOUBLE, //二つのFloatの値    DOUBLE_WITH_POINT; // 二つのFloatと一つのPoint}

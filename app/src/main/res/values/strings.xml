@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <!-- System -->
     <string name="app_name">PhotoEffect</string>
-    <string name="twitter_api_key">tABPpknxZdkzLmEdNGN8Oyk4O</string>
-    <string name="twitter_api_secret">FWEC4yT1kiKJf8iLuCF1JBdV5pLg929zJ0gdIKPMVUwn2n3Sgw</string>
+    <string name="app_name_system">photoeffect</string>
+    <string name="app_save_path">photoeffect/images</string>
+    <string name="app_package">info.nukoneko.android.photoeffect</string>
 
-    <string name="twitter_callback">freshtissue://twitter</string>
+    <!-- Twitter -->
+    <string name="twitter_consumer_key">jrK0FfB2gt1PZHsdXeOiE3xE0</string>
+    <string name="twitter_consumer_secret">k6IUbPrM4sy5VXWQHSoBkrnWEby6txbT5wXE795n2jAWdiEF9J</string>
+
+    <string name="twitter_callback_uri">nukoneko://photo-effect/auth</string>
+    <string name="twitter_callback_schema">nukoneko</string>
+    <string name="twitter_callback_host">photo-effect</string>
+    <string name="twitter_callback_path">/auth</string>
+
     <string name="no_set_account">アカウントが設定されていません</string>
     <string name="twitter_auth">認証</string>
     <string name="cancel">キャンセル</string>
@@ -21,5 +30,11 @@
     <string name="tweet_ok">ツイートする(要認証)</string>
     <string name="twitter_account_reauth">アカウントの再認証</string>
     <string name="twitter_menu">ツイッターメニュー</string>
+
+    <string name="picture_load">写真読込</string>
+    <string name="btn_tweet">ツイートする</string>
+    <string name="failed_load">読み込みに失敗しました</string>
+    <string name="success_load">読み込みました</string>
+    <string name="dead">現在は利用できません</string>
 
 </resources>

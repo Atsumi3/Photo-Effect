@@ -7,16 +7,20 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-feature android:glEsVersion="0x00020000" />
+
     <application
+        android:name=".sys.NKAppController"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="info.nukoneko.android.photoeffect.MainActivity"
+            android:name=".controller.main.MainActivity"
             android:label="@string/app_name"
             android:configChanges="orientation"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,17 +28,29 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="info.nukoneko.android.photoeffect.twitter.TwitterOAuthActivity"
+            android:name=".controller.twitter.TwitterOAuthActivity"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data
-                    android:host="twitter"
-                    android:scheme="freshtissue" />
+                    android:host="@string/twitter_callback_host"
+                    android:scheme="@string/twitter_callback_schema"
+                    android:path="@string/twitter_callback_path" />
             </intent-filter>
         </activity>
+
+        <!-- for Android N -->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="@string/app_package"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
     </application>
 
 </manifest>

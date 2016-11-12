@@ -37,6 +37,11 @@
     public <init>(android.content.Context, android.util.AttributeSet, int);
     public void set*(...);
 }
+-keep class * extends android.webkit.WebViewClient
+-keepclassmembers class * extends android.webkit.WebViewClient {
+    <methods>;
+}
+
 -keepattributes Signature
 
 -keep public class **.R
@@ -66,6 +71,21 @@
 -keep class com.google.** { *; }
 
 ##---------------End: Default Settings  ----------
+
+#------------- RxJava ------------
+-dontwarn rx.**
+-dontnote rx.**
+-keep class rx.**  { *; }
+
+-dontwarn sun.misc.Unsafe
+-keepclassmembers class rx.internal.util.unsafe.*ArrayQueue*Field* {
+   long producerIndex;
+   long consumerIndex;
+}
+-keepclassmembers class rx.internal.util.unsafe.BaseLinkedQueueProducerNodeRef {
+   long producerNode;
+   long consumerNode;
+}
 
 #------------- Twitter4j -----------
 -dontwarn twitter4j.**

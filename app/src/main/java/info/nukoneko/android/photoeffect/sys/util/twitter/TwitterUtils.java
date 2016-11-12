@@ -1,4 +1,4 @@
-package info.nukoneko.android.photoeffect.twitter;
+package info.nukoneko.android.photoeffect.sys.util.twitter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -6,13 +6,10 @@ import android.content.SharedPreferences;
 import info.nukoneko.android.photoeffect.R;
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
-import twitter4j.TwitterStream;
-import twitter4j.TwitterStreamFactory;
 import twitter4j.auth.AccessToken;
-import twitter4j.conf.ConfigurationBuilder;
 
 /**
- * Created by Atsumi on 2014/11/23.
+ * Created by Atsumi3 on 2014/11/23.
  */
 public class TwitterUtils {
     private static final String TOKEN = "token";
@@ -20,8 +17,8 @@ public class TwitterUtils {
     private static final String PREF_NAME = "twitter_access_token";
 
     public static Twitter getTwitterInstance(Context context) {
-        String consumerKey = context.getString(R.string.twitter_api_key);
-        String consumerSecret = context.getString(R.string.twitter_api_secret);
+        String consumerKey = context.getString(R.string.twitter_consumer_key);
+        String consumerSecret = context.getString(R.string.twitter_consumer_secret);
 
         TwitterFactory factory = new TwitterFactory();
         Twitter twitter = factory.getInstance();
@@ -32,23 +29,6 @@ public class TwitterUtils {
         return twitter;
     }
 
-    public static TwitterStream getTwitterStreamInstance(Context context) {
-        String consumerKey = context.getString(R.string.twitter_api_key);
-        String consumerSecret = context.getString(R.string.twitter_api_secret);
-        ConfigurationBuilder builder = new ConfigurationBuilder();
-        {
-            builder.setOAuthConsumerKey(consumerKey);
-            builder.setOAuthConsumerSecret(consumerSecret);
-            AccessToken accessToken = loadAccessToken(context);
-            if (accessToken != null) {
-                builder.setOAuthAccessToken(accessToken.getToken());
-                builder.setOAuthAccessTokenSecret(accessToken.getTokenSecret());
-            }
-        }
-        twitter4j.conf.Configuration configuration = builder.build();
-        return new TwitterStreamFactory(configuration).getInstance();
-    }
-
     public static void storeAccessToken(Context context, AccessToken accessToken) {
         SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
@@ -57,7 +37,7 @@ public class TwitterUtils {
         editor.apply();
     }
 
-    public static AccessToken loadAccessToken(Context context) {
+    private static AccessToken loadAccessToken(Context context) {
         SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         String token = preferences.getString(TOKEN, null);
         String tokenSecret = preferences.getString(TOKEN_SECRET, null);

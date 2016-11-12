@@ -1,0 +1,1 @@
+package info.nukoneko.android.photoeffect.controller.base;import com.trello.rxlifecycle.components.support.RxFragment;/** * Created by Atsumi3 on 2016/11/12. */public abstract class BaseFragment extends RxFragment {}
