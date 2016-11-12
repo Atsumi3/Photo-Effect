@@ -1,9 +1,9 @@
-package info.nukoneko.photoeffect.twitter;
+package info.nukoneko.android.photoeffect.twitter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import info.nukoneko.photoeffect.R;
+import info.nukoneko.android.photoeffect.R;
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
 import twitter4j.TwitterStream;

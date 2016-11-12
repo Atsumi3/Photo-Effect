@@ -1,4 +1,4 @@
-package info.nukoneko.photoeffect;
+package info.nukoneko.android.photoeffect;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -19,6 +19,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -40,8 +42,8 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import info.nukoneko.photoeffect.twitter.TwitterOAuthActivity;
-import info.nukoneko.photoeffect.twitter.TwitterUtils;
+import info.nukoneko.android.photoeffect.twitter.TwitterOAuthActivity;
+import info.nukoneko.android.photoeffect.twitter.TwitterUtils;
 import jp.co.cyberagent.android.gpuimage.GPUImage;
 import jp.co.cyberagent.android.gpuimage.GPUImageBrightnessFilter;
 import jp.co.cyberagent.android.gpuimage.GPUImageBulgeDistortionFilter;
@@ -609,20 +611,26 @@ public class MainActivity extends Activity {
 
     // 通知バーにお知らせを表示する関数
     public void showNotification(int image, String title, String text, int id) {
-        Notification notification = new Notification();
-        notification.icon = image;
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        PendingIntent pendingIntent;
-        pendingIntent = PendingIntent.getActivity(MainActivity.this, 0, intent, 0);
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(this)
+                        .setSmallIcon(image)
+                .setContentTitle(title)
+                .setContentText(text);
 
-        notification.setLatestEventInfo(getApplicationContext(), title, text, pendingIntent);
+        Intent intent = new Intent(this, MainActivity.class);
 
-        notification.tickerText = text;
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+        stackBuilder.addParentStack(MainActivity.class);
+        stackBuilder.addNextIntent(intent);
 
-        notification.defaults |= Notification.DEFAULT_VIBRATE;
+        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(id, notification);
+        builder.setContentIntent(resultPendingIntent);
+        builder.setTicker(text);
+        builder.setDefaults(Notification.DEFAULT_VIBRATE);
+
+        NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        mNotificationManager.notify(id, builder.build());
     }
 
     // ツイート内容を書く関数
